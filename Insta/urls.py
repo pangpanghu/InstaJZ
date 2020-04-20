@@ -9,15 +9,17 @@ Function views
 Class-based views
     1. Add an import:  from other_app.views import Home
     2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-导入App 级别的Url config
-Including another URLconf
+Including another URLconf 导入App 级别的Url config
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import path
+from Insta.views import HelloDjango
+
+# 当URL什么都没有的时候，直接调用HelloDjango这个View, 
+# 而这个View (这个Logic或者说功能吧)就去显示Home.html 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('insta/', include('Insta.urls')),
+   path('', HelloDjango.as_view()),
 ]
